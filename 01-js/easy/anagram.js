@@ -7,21 +7,34 @@
   - `npm run test-anagram`
 */
 
-function isAnagram(a, b) {
 
-  let len1 = a.length;
-  let len2 = b.length;
-  if(len1 !== len2){
-     console.log('Invalid Input');
-     return
-  }
-  let str1 = a.split('').sort().join('');
-  let str2 = b.split('').sort().join('');
-  if(str1 === str2){
-     console.log("True");
-  } else { 
-     console.log("False");
-  }
+let NO_OF_CHARS = 256;
+function isAnagram(str1, str2) {
+  let count1 = new Array(NO_OF_CHARS);
+    let count2 = new Array(NO_OF_CHARS);
+    for(let i = 0; i < NO_OF_CHARS; i++)
+    {
+        count1[i] = 0;
+        count2[i] = 0;
+    }
+         
+    let i;
+  
+    for (i = 0; i < str1.length &&
+         i < str2.length; i++)
+    {
+        count1[str1[i].charCodeAt(0)]++;
+        count2[str1[i].charCodeAt(0)]++;
+    }
+  
+    if (str1.length != str2.length)
+        return false;
+  
+    for (i = 0; i < NO_OF_CHARS; i++)
+    if (count1[i] != count2[i])
+        return false;
+  
+    return true;
 }
+
 module.exports = isAnagram;
-isAnagram("indian","ndiani")
