@@ -18,6 +18,7 @@ function calculateTotalSpentByCategory(transactions) {
       if(itemCategory.category === category){
         itemCategory.totalSpent+=price;
         isCategory=true;
+        
         break;
     }
   }
